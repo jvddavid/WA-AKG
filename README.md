@@ -189,9 +189,11 @@ Although **PM2 is highly recommended**, you can also deploy using Docker Compose
 
 2. **Start Services**:
    ```bash
-   docker compose up -d
+   docker compose up -d --build
    ```
    This spins up the MySQL database container alongside the Next.js gateway application.
+
+   After pulling updates, rebuild and recreate only the app with `docker compose up -d --build --force-recreate app`. The image includes Prisma, `tsx`, and TypeScript as production dependencies, so startup does not download them. Existing database and application volumes are preserved.
 
 ---
 
